@@ -27,26 +27,26 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/res/admin/index2.html"><b>RKoder</b>LTE</a>
+    <a href="/res/admin/index2.html"><b>Admin</b>LTE</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Entre para iniciar uma nova sessão</p>
+    <p class="login-box-msg">Sign in to start your session</p>
 
     <form action="/admin/login" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Nome" name="login">
+        <input type="text" class="form-control" placeholder="Login" name="login">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Senha" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Lembrar de mim
+              <input type="checkbox"> Remember Me
             </label>
           </div>
         </div>
@@ -57,18 +57,18 @@
         <!-- /.col -->
       </div>
     </form>
-<!-- 
+
     <div class="social-auth-links text-center">
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
-    </div> -->
+    </div>
     <!-- /.social-auth-links -->
 
-    <a href="#">Esqueci minha senha</a><br>
-    <a href="register.html" class="text-center">Cadastrar-se</a>
+    <a href="/admin/forgot">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>
 
   </div>
   <!-- /.login-box-body -->
