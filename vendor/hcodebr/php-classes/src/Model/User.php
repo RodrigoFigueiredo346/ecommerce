@@ -44,7 +44,10 @@ class User extends Model {
   public static function verifyLogin($inadmin = true) 
   {
     if (
-      !isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || !(int)$_SESSION[User::SESSION]["iduser"] > 0 || (bool)$_SESSION[User::SESSION]["inadmin"] !== $inadmin
+      !isset($_SESSION[User::SESSION]) 
+      || !$_SESSION[User::SESSION] 
+      || !(int)$_SESSION[User::SESSION]["iduser"] > 0 
+      || (bool)$_SESSION[User::SESSION]["inadmin"] !== $inadmin
     ) {
         header("Location: /admin/login");
         exit;
@@ -82,16 +85,42 @@ class User extends Model {
   public function get($iduser)
 	{
 		$sql = new Sql();
-
 		$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser", array(
 			":iduser"=>$iduser
 		));
 
 		// $data = $results[0];
 		// $data['desperson'] = utf8_encode($data['desperson']);
-		$this->setData($results[0]);
+		$this->setdata($results[0]);
 
 	}
+
+  public function update(){
+
+    $sql = new Sql();
+    $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
+      ":iduser"=>$this->getiduser(),
+      ":desperson"=>$this->getdesperson(),
+      ":deslogin"=>$this->getdeslogin(),
+      ":despassword"=>$this->getdespassword(),
+      ":desemail"=>$this->getdesemail(),
+      ":nrphone"=>$this->getnrphone(),
+      ":inadmin"=>$this->getinadmin(),     
+    ));
+
+    $this->setdata($results[0]);
+
+  }
+
+
+  public function delete($iduser){
+
+    $sql = new Sql();
+    $results = $sql->select("CALL sp_users_delete(:iduser)", array(
+      ":iduser"=>$iduser,   
+    ));   
+
+  }
 
 }
 
