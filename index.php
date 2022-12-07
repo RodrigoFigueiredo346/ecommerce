@@ -132,6 +132,7 @@ $app->get('/admin/forgot/sent', function(){
 
 
 $app->get('/admin/categories', function(){
+	User::verifyLogin();
 	$categories = Categories::listAll();
 	$page = new PageAdmin();
 	$page->setTpl("categories", array( //poderia passar também sem a palavra array, mas apenas abrindo e fechando []
@@ -177,16 +178,21 @@ $app->get("/admin/categories/:idcategory", function($idcategory){
 
 
 $app->post("/admin/categories/:idcategory", function($idcategory){
+	User::verifyLogin();
 	$category = new Categories();
 	$category->update($idcategory, $_POST);
 	header("Location: /admin/categories");	exit;
 });
 
 
-// $app->post('/carrinho', function(){
-// 	$page = new Page();
-// 	$page->setTpl("carrinho");
-// });
+$app->get('/categories/:idcategory', function($idcategory){
+	$category = new Categories();
+	$category->get((int)$idcategory);
+	$page = new Page();
+	$page->setTpl("category", array(
+		"category"=> $category->getvalues()
+	));
+});
 
 $app->run();
 

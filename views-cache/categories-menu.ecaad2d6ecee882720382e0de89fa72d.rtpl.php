@@ -1,0 +1,1 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><li><a href="/categories/14">Cama Mesa & Banho</a></li><li><a href="/categories/2">Eletrônico</a></li><li><a href="/categories/1">Informática</a></li><li><a href="/categories/16">Outra categoria</a></li><li><a href="/categories/13">Vestuário</a></li>
